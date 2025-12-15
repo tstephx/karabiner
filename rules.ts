@@ -61,43 +61,39 @@ const rules: KarabinerRules[] = [
     ),
     // b = "B"rowse
     b: {
-      t: open("https://twitter.com"),
-      // Quarterly "P"lan
-      p: open("https://mxstbr.com/cal"),
-      y: open("https://news.ycombinator.com"),
-      f: open("https://facebook.com"),
+      y: open("https://youtube.com"),
       r: open("https://reddit.com"),
-      h: open("https://hashnode.com/draft"),
+      g: open("https://mail.google.com"),
+      d: open("https://files.archana.cc/downloads"),
+      m: open("https://www.myanonamouse.net"),
+      l: open("https://linkedin.com"),
+      o: open("https://travel.capitalone.com"),
+      s: open("https://www.stremio.com"),
+      f: open("https://files.archana.cc/"),
+      w: open("https://whatbox.ca/news"),
+      t: open("https://www.fool.com"),
     },
     // o = "Open" applications
     o: {
       1: app("1Password"),
       g: app("Google Chrome"),
-      c: app("Notion Calendar"),
-      v: app("Zed"),
-      d: app("Discord"),
+      c: app("Claude"),
+      v: app("Visual Studio Code"),
+      d: app("Todoist"),
       s: app("Slack"),
-      e: app("Superhuman"),
-      n: app("Notion"),
-      t: app("Terminal"),
-      // Open todo list managed via *H*ypersonic
-      h: open(
-        "notion://www.notion.so/stellatehq/7b33b924746647499d906c55f89d5026"
-      ),
+      e: app("Microsoft Excel"),
+      n: app("Notes"),
+      t: app("Warp"),
+      b: app("Bear"),
       z: app("zoom.us"),
-      // "M"arkdown (Reflect.app)
-      m: app("Reflect"),
-      r: app("Reflect"),
+      m: app("VLC"),
+      r: app("Rectangle"),
       f: app("Finder"),
-      // "i"Message
-      i: app("Texts"),
+      i: app("Safari"),
       p: app("Spotify"),
-      a: app("iA Presenter"),
-      // "W"hatsApp has been replaced by Texts
-      w: open("Texts"),
-      l: open(
-        "raycast://extensions/stellate/mxstbr-commands/open-mxs-is-shortlink"
-      ),
+      a: app("ChatGPT Atlas"),
+      w: app("WhatsApp"),
+      x: app("calibre"),
     },
 
     // TODO: This doesn't quite work yet.
@@ -302,28 +298,56 @@ const rules: KarabinerRules[] = [
       },
     },
 
+    // g = "GitHub" via Raycast
+    g: {
+      r: open("raycast://extensions/thomaslombart/github/search-repositories"),
+      p: open("raycast://extensions/thomaslombart/github/my-pull-requests"),
+      i: open("raycast://extensions/thomaslombart/github/my-issues"),
+      c: open("raycast://extensions/thomaslombart/github/create-pull-request"),
+      n: open("raycast://extensions/thomaslombart/github/create-issue"),
+      b: open("raycast://extensions/thomaslombart/github/create-branch"),
+      s: open("raycast://extensions/thomaslombart/github/my-starred-repositories"),
+      l: open("raycast://extensions/thomaslombart/github/my-latest-repositories"),
+    },
+
     // r = "Raycast"
     r: {
+      // Built-in Raycast features
+      h: open("raycast://extensions/raycast/clipboard-history/clipboard-history"),
+      e: open("raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"),
       c: open("raycast://extensions/thomas/color-picker/pick-color"),
-      n: open("raycast://script-commands/dismiss-notifications"),
-      l: open(
-        "raycast://extensions/stellate/mxstbr-commands/create-mxs-is-shortlink"
-      ),
-      e: open(
-        "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
-      ),
-      p: open("raycast://extensions/raycast/raycast/confetti"),
-      a: open("raycast://extensions/raycast/raycast-ai/ai-chat"),
-      s: open("raycast://extensions/peduarte/silent-mention/index"),
-      h: open(
-        "raycast://extensions/raycast/clipboard-history/clipboard-history"
-      ),
-      1: open(
-        "raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-1"
-      ),
-      2: open(
-        "raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-2"
-      ),
+      f: open("raycast://extensions/raycast/file-search/search-files"),
+      // Installed extensions  
+      n: open("raycast://extensions/tumtum/apple-notes/index"),
+      b: open("raycast://extensions/hmarr/bear/index"),
+      x: open("raycast://extensions/xeric/currency-exchange/index"),
+      w: open("raycast://extensions/tonka3000/weather/index"),
+      i: open("raycast://extensions/tonka3000/speedtest/index"),
+      m: open("raycast://extensions/hossammourad/raycast-system-monitor/system-monitor"),
+      a: open("raycast://extensions/thomaslombart/apple-reminders/create-reminder"),
+      k: open("raycast://extensions/rolandleth/kill-process/index"),
+      v: open("raycast://extensions/koinzhang/paste-as-plain-text/paste-as-plain-text"),
+      1: open("raycast://extensions/khasbilegt/1password/item-list"),
+      // Spotify
+      p: open("raycast://extensions/mattisssa/spotify-player/nowPlaying"),
+      // System controls
+      d: open("raycast://extensions/yakitrak/do-not-disturb/toggle"),
+      l: open("raycast://extensions/raycast/system/lock-screen"),
+      o: open("raycast://extensions/raycast/raycast/store"),
+    },
+    // Cheatsheet - hold to show, release to hide
+    slash: {
+      description: "Show Cheatsheet",
+      to: [
+        {
+          shell_command: "qlmanage -p ~/github/mxstbr/karabiner/cheatsheet.html &>/dev/null & sleep 0.1 && osascript -e 'tell application \"System Events\" to set frontmost of process \"qlmanage\" to true'",
+        },
+      ],
+      to_after_key_up: [
+        {
+          shell_command: "killall qlmanage &>/dev/null",
+        },
+      ],
     },
   }),
   {

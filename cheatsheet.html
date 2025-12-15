@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Karabiner Cheat Sheet</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #eee;
+      padding: 20px;
+      font-size: 12px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section {
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .section h2 {
+      font-size: 13px;
+      color: #4fc3f7;
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 5px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 3px 0;
+    }
+    .key {
+      background: rgba(255,255,255,0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: "SF Mono", monospace;
+      font-size: 11px;
+      min-width: 20px;
+      text-align: center;
+    }
+    .action { color: #ccc; }
+    .hint {
+      text-align: center;
+      margin-top: 15px;
+      color: #888;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <h1>⌨️ Hyper Key Shortcuts (Hold Caps Lock)</h1>
+  <div class="container">
+    <div class="section">
+      <h2>O = Open Apps</h2>
+      <div class="row"><span class="key">1</span><span class="action">1Password</span></div>
+      <div class="row"><span class="key">g</span><span class="action">Chrome</span></div>
+      <div class="row"><span class="key">c</span><span class="action">Claude</span></div>
+      <div class="row"><span class="key">v</span><span class="action">VS Code</span></div>
+      <div class="row"><span class="key">d</span><span class="action">Todoist</span></div>
+      <div class="row"><span class="key">s</span><span class="action">Slack</span></div>
+      <div class="row"><span class="key">e</span><span class="action">Excel</span></div>
+      <div class="row"><span class="key">n</span><span class="action">Notes</span></div>
+      <div class="row"><span class="key">t</span><span class="action">Warp</span></div>
+      <div class="row"><span class="key">b</span><span class="action">Bear</span></div>
+      <div class="row"><span class="key">z</span><span class="action">Zoom</span></div>
+      <div class="row"><span class="key">m</span><span class="action">VLC</span></div>
+      <div class="row"><span class="key">f</span><span class="action">Finder</span></div>
+      <div class="row"><span class="key">p</span><span class="action">Spotify</span></div>
+      <div class="row"><span class="key">w</span><span class="action">WhatsApp</span></div>
+      <div class="row"><span class="key">x</span><span class="action">Calibre</span></div>
+    </div>
+
+    <div class="section">
+      <h2>B = Browse Sites</h2>
+      <div class="row"><span class="key">y</span><span class="action">YouTube</span></div>
+      <div class="row"><span class="key">r</span><span class="action">Reddit</span></div>
+      <div class="row"><span class="key">g</span><span class="action">Gmail</span></div>
+      <div class="row"><span class="key">d</span><span class="action">files/downloads</span></div>
+      <div class="row"><span class="key">m</span><span class="action">MyAnonamouse</span></div>
+      <div class="row"><span class="key">l</span><span class="action">LinkedIn</span></div>
+      <div class="row"><span class="key">o</span><span class="action">Capital One</span></div>
+      <div class="row"><span class="key">s</span><span class="action">Stremio</span></div>
+      <div class="row"><span class="key">f</span><span class="action">files.archana.cc</span></div>
+      <div class="row"><span class="key">w</span><span class="action">Whatbox</span></div>
+      <div class="row"><span class="key">t</span><span class="action">Motley Fool</span></div>
+    </div>
+
+    <div class="section">
+      <h2>G = GitHub</h2>
+      <div class="row"><span class="key">r</span><span class="action">Search Repos</span></div>
+      <div class="row"><span class="key">p</span><span class="action">My PRs</span></div>
+      <div class="row"><span class="key">i</span><span class="action">My Issues</span></div>
+      <div class="row"><span class="key">c</span><span class="action">Create PR</span></div>
+      <div class="row"><span class="key">n</span><span class="action">New Issue</span></div>
+      <div class="row"><span class="key">b</span><span class="action">Create Branch</span></div>
+      <div class="row"><span class="key">s</span><span class="action">Starred Repos</span></div>
+      <div class="row"><span class="key">l</span><span class="action">Latest Repos</span></div>
+    </div>
+
+    <div class="section">
+      <h2>W = Window</h2>
+      <div class="row"><span class="key">h</span><span class="action">Left half</span></div>
+      <div class="row"><span class="key">l</span><span class="action">Right half</span></div>
+      <div class="row"><span class="key">j</span><span class="action">Bottom half</span></div>
+      <div class="row"><span class="key">k</span><span class="action">Top half</span></div>
+      <div class="row"><span class="key">f</span><span class="action">Maximize</span></div>
+      <div class="row"><span class="key">y</span><span class="action">Prev display</span></div>
+      <div class="row"><span class="key">o</span><span class="action">Next display</span></div>
+      <div class="row"><span class="key">u</span><span class="action">Prev tab</span></div>
+      <div class="row"><span class="key">i</span><span class="action">Next tab</span></div>
+      <div class="row"><span class="key">n</span><span class="action">Next window</span></div>
+    </div>
+
+    <div class="section">
+      <h2>R = Raycast</h2>
+      <div class="row"><span class="key">h</span><span class="action">Clipboard</span></div>
+      <div class="row"><span class="key">e</span><span class="action">Emoji</span></div>
+      <div class="row"><span class="key">c</span><span class="action">Color Picker</span></div>
+      <div class="row"><span class="key">f</span><span class="action">File Search</span></div>
+      <div class="row"><span class="key">n</span><span class="action">Apple Notes</span></div>
+      <div class="row"><span class="key">b</span><span class="action">Bear Notes</span></div>
+      <div class="row"><span class="key">x</span><span class="action">Currency</span></div>
+      <div class="row"><span class="key">w</span><span class="action">Weather</span></div>
+      <div class="row"><span class="key">i</span><span class="action">Speedtest</span></div>
+      <div class="row"><span class="key">m</span><span class="action">System Monitor</span></div>
+      <div class="row"><span class="key">a</span><span class="action">Reminders</span></div>
+      <div class="row"><span class="key">k</span><span class="action">Kill Process</span></div>
+      <div class="row"><span class="key">v</span><span class="action">Paste Plain</span></div>
+      <div class="row"><span class="key">1</span><span class="action">1Password</span></div>
+      <div class="row"><span class="key">p</span><span class="action">Spotify</span></div>
+      <div class="row"><span class="key">d</span><span class="action">Do Not Disturb</span></div>
+    </div>
+
+    <div class="section">
+      <h2>S = System</h2>
+      <div class="row"><span class="key">u</span><span class="action">Volume up</span></div>
+      <div class="row"><span class="key">j</span><span class="action">Volume down</span></div>
+      <div class="row"><span class="key">i</span><span class="action">Brightness up</span></div>
+      <div class="row"><span class="key">k</span><span class="action">Brightness down</span></div>
+      <div class="row"><span class="key">l</span><span class="action">Lock screen</span></div>
+      <div class="row"><span class="key">p</span><span class="action">Play/pause</span></div>
+      <div class="row"><span class="key">;</span><span class="action">Next track</span></div>
+    </div>
+
+    <div class="section">
+      <h2>V = Vim Movement</h2>
+      <div class="row"><span class="key">h</span><span class="action">← Left</span></div>
+      <div class="row"><span class="key">j</span><span class="action">↓ Down</span></div>
+      <div class="row"><span class="key">k</span><span class="action">↑ Up</span></div>
+      <div class="row"><span class="key">l</span><span class="action">→ Right</span></div>
+      <div class="row"><span class="key">u</span><span class="action">Page down</span></div>
+      <div class="row"><span class="key">i</span><span class="action">Page up</span></div>
+    </div>
+
+    <div class="section">
+      <h2>C = Music</h2>
+      <div class="row"><span class="key">p</span><span class="action">Play/pause</span></div>
+      <div class="row"><span class="key">n</span><span class="action">Next</span></div>
+      <div class="row"><span class="key">b</span><span class="action">Back</span></div>
+    </div>
+
+    <div class="section">
+      <h2>Quick Reference</h2>
+      <div class="row"><span class="key">Tap ⇪</span><span class="action">Escape</span></div>
+      <div class="row"><span class="key">Hold ⇪</span><span class="action">Hyper Key</span></div>
+      <div class="row"><span class="key">⇪ + /</span><span class="action">This cheatsheet</span></div>
+    </div>
+  </div>
+  <p class="hint">Release Caps Lock + / to close</p>
+</body>
+</html>
