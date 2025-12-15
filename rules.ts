@@ -310,6 +310,9 @@ const rules: KarabinerRules[] = [
       l: open("raycast://extensions/thomaslombart/github/my-latest-repositories"),
     },
 
+    // p = "Projects" - Open VS Code workspace
+    p: open("file:///Users/taylorstephens/github/my-projects.code-workspace"),
+
     // r = "Raycast"
     r: {
       // Built-in Raycast features
