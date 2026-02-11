@@ -348,7 +348,7 @@ const rules: KarabinerRules[] = [
       ],
       to_after_key_up: [
         {
-          shell_command: `osascript -e 'tell application "Google Chrome" to repeat with w in windows' -e 'if URL of active tab of w contains "cheatsheet.html" then close w' -e 'end repeat'`,
+          shell_command: `osascript -e 'tell application "Google Chrome" to close (every window whose URL of active tab contains "cheatsheet.html")'`,
         },
       ],
     },
