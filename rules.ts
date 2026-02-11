@@ -343,7 +343,7 @@ const rules: KarabinerRules[] = [
       description: "Show Cheatsheet",
       to: [
         {
-          shell_command: `osascript -e 'tell application "Google Chrome" to set newWindow to make new window' -e 'tell application "Google Chrome" to set URL of active tab of newWindow to "file://${process.env.HOME}/github/mxstbr/karabiner/cheatsheet.html"' -e 'tell application "Google Chrome" to activate' -e 'delay 0.1' -e 'tell application "System Events" to tell process "Google Chrome" to perform action "AXZoomWindow" of window 1'`,
+          shell_command: `osascript -e 'tell application "Google Chrome" to set newWindow to make new window' -e 'tell application "Google Chrome" to set bounds of newWindow to {0, 25, 800, 600}' -e 'tell application "Google Chrome" to set URL of active tab of newWindow to "file://${process.env.HOME}/github/mxstbr/karabiner/cheatsheet.html"' -e 'tell application "Google Chrome" to activate' -e 'delay 0.1' -e 'tell application "System Events" to tell process "Google Chrome" to perform action "AXZoomWindow" of window 1'`,
         },
       ],
       to_after_key_up: [
