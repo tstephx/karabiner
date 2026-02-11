@@ -73,7 +73,7 @@
       <div class="row"><span class="key">d</span><span class="action">Todoist</span></div>
       <div class="row"><span class="key">s</span><span class="action">Slack</span></div>
       <div class="row"><span class="key">e</span><span class="action">Excel</span></div>
-      <div class="row"><span class="key">n</span><span class="action">Notes</span></div>
+      <div class="row"><span class="key">n</span><span class="action">CotEditor</span></div>
       <div class="row"><span class="key">t</span><span class="action">Warp</span></div>
       <div class="row"><span class="key">b</span><span class="action">Bear</span></div>
       <div class="row"><span class="key">z</span><span class="action">Zoom</span></div>
@@ -179,6 +179,77 @@
       <div class="row"><span class="key">Hold ⇪</span><span class="action">Hyper Key</span></div>
       <div class="row"><span class="key">⇪ + /</span><span class="action">This cheatsheet</span></div>
       <div class="row"><span class="key">⇪ + p</span><span class="action">VS Code Projects</span></div>
+    </div>
+  </div>
+  <h1 style="margin-top: 20px;">🐚 Shell Aliases (Warp / Bash)</h1>
+  <div class="container">
+    <div class="section">
+      <h2>_Lab</h2>
+      <div class="row"><span class="key">lab</span><span class="action">_Lab + Claude Code</span></div>
+      <div class="row"><span class="key">labcd</span><span class="action">cd to _Lab</span></div>
+      <div class="row"><span class="key">labls</span><span class="action">List _Lab projects</span></div>
+      <div class="row"><span class="key">labgit</span><span class="action">_Lab git status + log</span></div>
+      <div class="row"><span class="key">newproject</span><span class="action">Create from template</span></div>
+      <div class="row"><span class="key">projects</span><span class="action">_Lab/projects</span></div>
+      <div class="row"><span class="key">portfolio</span><span class="action">website-portfolio</span></div>
+      <div class="row"><span class="key">innit</span><span class="action">Claude-Innit</span></div>
+      <div class="row"><span class="key">workdocs</span><span class="action">work_documents</span></div>
+    </div>
+
+    <div class="section">
+      <h2>~/_Projects (cd only)</h2>
+      <div class="row"><span class="key">proj</span><span class="action">~/_Projects</span></div>
+      <div class="row"><span class="key">bookmcp</span><span class="action">book-mcp-server</span></div>
+      <div class="row"><span class="key">ingest</span><span class="action">book-ingestion-python</span></div>
+      <div class="row"><span class="key">docint</span><span class="action">document-intelligence</span></div>
+      <div class="row"><span class="key">mfool</span><span class="action">motley-fool-scraper</span></div>
+      <div class="row"><span class="key">mcpfolio</span><span class="action">my-mcp-portfolio</span></div>
+      <div class="row"><span class="key">panal</span><span class="action">portfolio-analysis</span></div>
+      <div class="row"><span class="key">amzn</span><span class="action">Projects-AMZN</span></div>
+      <div class="row"><span class="key">whatbox</span><span class="action">whatbox</span></div>
+      <div class="row"><span class="key">wbmcp</span><span class="action">whatbox-portfolio-mcp</span></div>
+      <div class="row"><span class="key">wedding</span><span class="action">Wedding-Video</span></div>
+      <div class="row"><span class="key">jobhunt</span><span class="action">_Job_Hunt_Docs</span></div>
+    </div>
+
+    <div class="section">
+      <h2>~/_Projects + Claude (-c)</h2>
+      <div class="row"><span class="key">bookmcp-c</span><span class="action">book-mcp-server</span></div>
+      <div class="row"><span class="key">ingest-c</span><span class="action">book-ingestion-python</span></div>
+      <div class="row"><span class="key">docint-c</span><span class="action">document-intelligence</span></div>
+      <div class="row"><span class="key">mfool-c</span><span class="action">motley-fool-scraper</span></div>
+      <div class="row"><span class="key">mcpfolio-c</span><span class="action">my-mcp-portfolio</span></div>
+      <div class="row"><span class="key">panal-c</span><span class="action">portfolio-analysis</span></div>
+      <div class="row"><span class="key">whatbox-c</span><span class="action">whatbox</span></div>
+      <div class="row"><span class="key">wbmcp-c</span><span class="action">whatbox-portfolio-mcp</span></div>
+      <div class="row"><span class="key">wedding-c</span><span class="action">Wedding-Video</span></div>
+    </div>
+
+    <div class="section">
+      <h2>Git</h2>
+      <div class="row"><span class="key">gs</span><span class="action">git status</span></div>
+      <div class="row"><span class="key">gl</span><span class="action">git log --oneline -10</span></div>
+      <div class="row"><span class="key">gd</span><span class="action">git diff</span></div>
+      <div class="row"><span class="key">gco</span><span class="action">git checkout</span></div>
+      <div class="row"><span class="key">gb</span><span class="action">git branch</span></div>
+      <div class="row"><span class="key">gp</span><span class="action">git push</span></div>
+      <div class="row"><span class="key">gc</span><span class="action">git commit</span></div>
+    </div>
+
+    <div class="section">
+      <h2>Utility</h2>
+      <div class="row"><span class="key">ll</span><span class="action">ls -la</span></div>
+      <div class="row"><span class="key">serve</span><span class="action">Python HTTP :8000</span></div>
+      <div class="row"><span class="key">venv</span><span class="action">Create + activate venv</span></div>
+      <div class="row"><span class="key">activate</span><span class="action">Activate .venv</span></div>
+      <div class="row"><span class="key">ports</span><span class="action">Show listening ports</span></div>
+      <div class="row"><span class="key">myip</span><span class="action">Public IP address</span></div>
+      <div class="row"><span class="key">cpwd</span><span class="action">Copy path to clipboard</span></div>
+      <div class="row"><span class="key">reload</span><span class="action">Reload bash_profile</span></div>
+      <div class="row"><span class="key">..</span><span class="action">cd ..</span></div>
+      <div class="row"><span class="key">...</span><span class="action">cd ../..</span></div>
+      <div class="row"><span class="key">dl</span><span class="action">~/Downloads</span></div>
+      <div class="row"><span class="key">desk</span><span class="action">~/Desktop</span></div>
     </div>
   </div>
   <p class="hint">Release Caps Lock + / to close</p>
