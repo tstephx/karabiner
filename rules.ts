@@ -82,7 +82,7 @@ const rules: KarabinerRules[] = [
       d: app("Todoist"),
       s: app("Slack"),
       e: app("Microsoft Excel"),
-      n: app("Notes"),
+      n: app("CotEditor"),
       t: app("Warp"),
       b: app("Bear"),
       z: app("zoom.us"),
@@ -338,17 +338,17 @@ const rules: KarabinerRules[] = [
       l: open("raycast://extensions/raycast/system/lock-screen"),
       o: open("raycast://extensions/raycast/raycast/store"),
     },
-    // Cheatsheet - hold to show, release to hide
+    // Cheatsheet - hold to show in maximized Chrome, release to close
     slash: {
       description: "Show Cheatsheet",
       to: [
         {
-          shell_command: "qlmanage -p ~/github/mxstbr/karabiner/cheatsheet.html &>/dev/null & sleep 0.1 && osascript -e 'tell application \"System Events\" to set frontmost of process \"qlmanage\" to true'",
+          shell_command: `open -na "Google Chrome" --args --new-window --window-size=10000,10000 "file://${process.env.HOME}/github/mxstbr/karabiner/cheatsheet.html"`,
         },
       ],
       to_after_key_up: [
         {
-          shell_command: "killall qlmanage &>/dev/null",
+          shell_command: `osascript -e 'tell application "Google Chrome" to repeat with w in windows' -e 'if URL of active tab of w contains "cheatsheet.html" then close w' -e 'end repeat'`,
         },
       ],
     },

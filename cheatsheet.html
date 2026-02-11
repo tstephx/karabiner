@@ -1,71 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Karabiner Cheat Sheet</title>
+  <title>Cheat Sheet</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      color: #eee;
-      padding: 20px;
-      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: #0e0e10;
+      color: #d4d4d8;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 14px 16px;
+      gap: 10px;
+      -webkit-font-smoothing: antialiased;
     }
-    h1 {
-      text-align: center;
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #fff;
+
+    /* ── Section Label ── */
+    .label {
+      font-size: 10px;
+      font-weight: 600;
+      color: #52525b;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      flex-shrink: 0;
     }
-    .container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+
+    /* ── Each section fills its share ── */
     .section {
-      background: rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 0;
+      flex: 1;
     }
-    .section h2 {
-      font-size: 13px;
-      color: #4fc3f7;
-      margin-bottom: 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding-bottom: 5px;
+
+    /* ── Grid fills available space ── */
+    .grid {
+      display: grid;
+      gap: 8px;
+      flex: 1;
+      min-height: 0;
     }
+
+    .grid.top { grid-template-columns: repeat(6, 1fr); }
+    .grid.bottom { grid-template-columns: repeat(4, 1fr); }
+
+    /* ── Cards ── */
+    .card {
+      background: #18181b;
+      border: 1px solid #232326;
+      border-radius: 6px;
+      padding: 8px 10px;
+      overflow-y: auto;
+      min-height: 0;
+    }
+
+    .card::-webkit-scrollbar { width: 0; }
+
+    .card h2 {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 5px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #232326;
+    }
+
+    .card.blue h2 { color: #60a5fa; }
+    .card.purple h2 { color: #a78bfa; }
+    .card.green h2 { color: #4ade80; }
+    .card.amber h2 { color: #fbbf24; }
+    .card.rose h2 { color: #fb7185; }
+    .card.cyan h2 { color: #22d3ee; }
+
+    /* ── Rows ── */
     .row {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      padding: 3px 0;
+      padding: 1.5px 0;
+      gap: 8px;
+      line-height: 1.3;
     }
+
+    .row .action {
+      color: #a1a1aa;
+      font-size: 10px;
+      text-align: right;
+    }
+
+    /* ── Keys ── */
     .key {
-      background: rgba(255,255,255,0.15);
-      padding: 2px 6px;
-      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 16px;
+      padding: 1px 5px;
+      background: #27272a;
+      border: 1px solid #3f3f46;
+      border-radius: 3px;
       font-family: "SF Mono", monospace;
-      font-size: 11px;
-      min-width: 20px;
-      text-align: center;
+      font-size: 9.5px;
+      color: #e4e4e7;
+      white-space: nowrap;
+      box-shadow: 0 1px 0 #111;
+      flex-shrink: 0;
     }
-    .action { color: #ccc; }
-    .hint {
-      text-align: center;
-      margin-top: 15px;
-      color: #888;
-      font-size: 11px;
+
+    /* ── Divider + Subtitle ── */
+    .divider {
+      height: 1px;
+      background: #232326;
+      margin: 3px 0;
+    }
+
+    .subtitle {
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #52525b;
+      padding: 3px 0 1px;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
-  <h1>⌨️ Hyper Key Shortcuts (Hold Caps Lock)</h1>
-  <div class="container">
-    <div class="section">
-      <h2>O = Open Apps</h2>
+
+<!-- ═══════════════ HYPER KEY ═══════════════ -->
+<div class="section">
+  <div class="label">Hyper Key &mdash; Hold &#8682;</div>
+  <div class="grid top">
+
+    <div class="card blue">
+      <h2>O &mdash; Open Apps</h2>
       <div class="row"><span class="key">1</span><span class="action">1Password</span></div>
       <div class="row"><span class="key">g</span><span class="action">Chrome</span></div>
       <div class="row"><span class="key">c</span><span class="action">Claude</span></div>
@@ -84,49 +156,8 @@
       <div class="row"><span class="key">x</span><span class="action">Calibre</span></div>
     </div>
 
-    <div class="section">
-      <h2>B = Browse Sites</h2>
-      <div class="row"><span class="key">y</span><span class="action">YouTube</span></div>
-      <div class="row"><span class="key">r</span><span class="action">Reddit</span></div>
-      <div class="row"><span class="key">g</span><span class="action">Gmail</span></div>
-      <div class="row"><span class="key">d</span><span class="action">files/downloads</span></div>
-      <div class="row"><span class="key">m</span><span class="action">MyAnonamouse</span></div>
-      <div class="row"><span class="key">l</span><span class="action">LinkedIn</span></div>
-      <div class="row"><span class="key">o</span><span class="action">Capital One</span></div>
-      <div class="row"><span class="key">s</span><span class="action">Stremio</span></div>
-      <div class="row"><span class="key">f</span><span class="action">files.archana.cc</span></div>
-      <div class="row"><span class="key">w</span><span class="action">Whatbox</span></div>
-      <div class="row"><span class="key">t</span><span class="action">Motley Fool</span></div>
-    </div>
-
-    <div class="section">
-      <h2>G = GitHub</h2>
-      <div class="row"><span class="key">r</span><span class="action">Search Repos</span></div>
-      <div class="row"><span class="key">p</span><span class="action">My PRs</span></div>
-      <div class="row"><span class="key">i</span><span class="action">My Issues</span></div>
-      <div class="row"><span class="key">c</span><span class="action">Create PR</span></div>
-      <div class="row"><span class="key">n</span><span class="action">New Issue</span></div>
-      <div class="row"><span class="key">b</span><span class="action">Create Branch</span></div>
-      <div class="row"><span class="key">s</span><span class="action">Starred Repos</span></div>
-      <div class="row"><span class="key">l</span><span class="action">Latest Repos</span></div>
-    </div>
-
-    <div class="section">
-      <h2>W = Window</h2>
-      <div class="row"><span class="key">h</span><span class="action">Left half</span></div>
-      <div class="row"><span class="key">l</span><span class="action">Right half</span></div>
-      <div class="row"><span class="key">j</span><span class="action">Bottom half</span></div>
-      <div class="row"><span class="key">k</span><span class="action">Top half</span></div>
-      <div class="row"><span class="key">f</span><span class="action">Maximize</span></div>
-      <div class="row"><span class="key">y</span><span class="action">Prev display</span></div>
-      <div class="row"><span class="key">o</span><span class="action">Next display</span></div>
-      <div class="row"><span class="key">u</span><span class="action">Prev tab</span></div>
-      <div class="row"><span class="key">i</span><span class="action">Next tab</span></div>
-      <div class="row"><span class="key">n</span><span class="action">Next window</span></div>
-    </div>
-
-    <div class="section">
-      <h2>R = Raycast</h2>
+    <div class="card rose">
+      <h2>R &mdash; Raycast</h2>
       <div class="row"><span class="key">h</span><span class="action">Clipboard</span></div>
       <div class="row"><span class="key">e</span><span class="action">Emoji</span></div>
       <div class="row"><span class="key">c</span><span class="action">Color Picker</span></div>
@@ -145,8 +176,49 @@
       <div class="row"><span class="key">d</span><span class="action">Do Not Disturb</span></div>
     </div>
 
-    <div class="section">
-      <h2>S = System</h2>
+    <div class="card purple">
+      <h2>B &mdash; Browse Sites</h2>
+      <div class="row"><span class="key">y</span><span class="action">YouTube</span></div>
+      <div class="row"><span class="key">r</span><span class="action">Reddit</span></div>
+      <div class="row"><span class="key">g</span><span class="action">Gmail</span></div>
+      <div class="row"><span class="key">d</span><span class="action">files/downloads</span></div>
+      <div class="row"><span class="key">m</span><span class="action">MyAnonamouse</span></div>
+      <div class="row"><span class="key">l</span><span class="action">LinkedIn</span></div>
+      <div class="row"><span class="key">o</span><span class="action">Capital One</span></div>
+      <div class="row"><span class="key">s</span><span class="action">Stremio</span></div>
+      <div class="row"><span class="key">f</span><span class="action">files.archana.cc</span></div>
+      <div class="row"><span class="key">w</span><span class="action">Whatbox</span></div>
+      <div class="row"><span class="key">t</span><span class="action">Motley Fool</span></div>
+    </div>
+
+    <div class="card amber">
+      <h2>W &mdash; Window</h2>
+      <div class="row"><span class="key">h</span><span class="action">Left half</span></div>
+      <div class="row"><span class="key">l</span><span class="action">Right half</span></div>
+      <div class="row"><span class="key">j</span><span class="action">Bottom half</span></div>
+      <div class="row"><span class="key">k</span><span class="action">Top half</span></div>
+      <div class="row"><span class="key">f</span><span class="action">Maximize</span></div>
+      <div class="row"><span class="key">y</span><span class="action">Prev display</span></div>
+      <div class="row"><span class="key">o</span><span class="action">Next display</span></div>
+      <div class="row"><span class="key">u</span><span class="action">Prev tab</span></div>
+      <div class="row"><span class="key">i</span><span class="action">Next tab</span></div>
+      <div class="row"><span class="key">n</span><span class="action">Next window</span></div>
+    </div>
+
+    <div class="card green">
+      <h2>G &mdash; GitHub</h2>
+      <div class="row"><span class="key">r</span><span class="action">Search Repos</span></div>
+      <div class="row"><span class="key">p</span><span class="action">My PRs</span></div>
+      <div class="row"><span class="key">i</span><span class="action">My Issues</span></div>
+      <div class="row"><span class="key">c</span><span class="action">Create PR</span></div>
+      <div class="row"><span class="key">n</span><span class="action">New Issue</span></div>
+      <div class="row"><span class="key">b</span><span class="action">Create Branch</span></div>
+      <div class="row"><span class="key">s</span><span class="action">Starred Repos</span></div>
+      <div class="row"><span class="key">l</span><span class="action">Latest Repos</span></div>
+    </div>
+
+    <div class="card cyan">
+      <h2>S &mdash; System</h2>
       <div class="row"><span class="key">u</span><span class="action">Volume up</span></div>
       <div class="row"><span class="key">j</span><span class="action">Volume down</span></div>
       <div class="row"><span class="key">i</span><span class="action">Brightness up</span></div>
@@ -154,53 +226,51 @@
       <div class="row"><span class="key">l</span><span class="action">Lock screen</span></div>
       <div class="row"><span class="key">p</span><span class="action">Play/pause</span></div>
       <div class="row"><span class="key">;</span><span class="action">Next track</span></div>
-    </div>
-
-    <div class="section">
-      <h2>V = Vim Movement</h2>
-      <div class="row"><span class="key">h</span><span class="action">← Left</span></div>
-      <div class="row"><span class="key">j</span><span class="action">↓ Down</span></div>
-      <div class="row"><span class="key">k</span><span class="action">↑ Up</span></div>
-      <div class="row"><span class="key">l</span><span class="action">→ Right</span></div>
-      <div class="row"><span class="key">u</span><span class="action">Page down</span></div>
-      <div class="row"><span class="key">i</span><span class="action">Page up</span></div>
-    </div>
-
-    <div class="section">
-      <h2>C = Music</h2>
+      <div class="divider"></div>
+      <div class="subtitle">V &mdash; Vim</div>
+      <div class="row"><span class="key">h j k l</span><span class="action">&larr; &darr; &uarr; &rarr;</span></div>
+      <div class="row"><span class="key">u / i</span><span class="action">Pg down / up</span></div>
+      <div class="divider"></div>
+      <div class="subtitle">C &mdash; Music</div>
       <div class="row"><span class="key">p</span><span class="action">Play/pause</span></div>
-      <div class="row"><span class="key">n</span><span class="action">Next</span></div>
-      <div class="row"><span class="key">b</span><span class="action">Back</span></div>
+      <div class="row"><span class="key">n / b</span><span class="action">Next / Back</span></div>
+      <div class="divider"></div>
+      <div class="subtitle">Quick Ref</div>
+      <div class="row"><span class="key">Tap &#8682;</span><span class="action">Escape</span></div>
+      <div class="row"><span class="key">Hold &#8682;</span><span class="action">Hyper Key</span></div>
+      <div class="row"><span class="key">&#8682; /</span><span class="action">This cheatsheet</span></div>
     </div>
 
-    <div class="section">
-      <h2>Quick Reference</h2>
-      <div class="row"><span class="key">Tap ⇪</span><span class="action">Escape</span></div>
-      <div class="row"><span class="key">Hold ⇪</span><span class="action">Hyper Key</span></div>
-      <div class="row"><span class="key">⇪ + /</span><span class="action">This cheatsheet</span></div>
-      <div class="row"><span class="key">⇪ + p</span><span class="action">VS Code Projects</span></div>
-    </div>
   </div>
-  <h1 style="margin-top: 20px;">🐚 Shell Aliases (Warp / Bash)</h1>
-  <div class="container">
-    <div class="section">
+</div>
+
+<!-- ═══════════════ SHELL ═══════════════ -->
+<div class="section">
+  <div class="label">Shell Aliases</div>
+  <div class="grid bottom">
+
+    <div class="card blue">
       <h2>_Lab</h2>
-      <div class="row"><span class="key">lab</span><span class="action">_Lab + Claude Code</span></div>
+      <div class="row"><span class="key">lab</span><span class="action">_Lab + Claude</span></div>
       <div class="row"><span class="key">labcd</span><span class="action">cd to _Lab</span></div>
-      <div class="row"><span class="key">labls</span><span class="action">List _Lab projects</span></div>
-      <div class="row"><span class="key">labgit</span><span class="action">_Lab git status + log</span></div>
-      <div class="row"><span class="key">newproject</span><span class="action">Create from template</span></div>
+      <div class="row"><span class="key">labls</span><span class="action">List projects</span></div>
+      <div class="row"><span class="key">labgit</span><span class="action">git status + log</span></div>
+      <div class="row"><span class="key">newproject</span><span class="action">From template</span></div>
+      <div class="divider"></div>
+      <div class="subtitle">cd</div>
       <div class="row"><span class="key">projects</span><span class="action">_Lab/projects</span></div>
       <div class="row"><span class="key">portfolio</span><span class="action">website-portfolio</span></div>
       <div class="row"><span class="key">innit</span><span class="action">Claude-Innit</span></div>
       <div class="row"><span class="key">workdocs</span><span class="action">work_documents</span></div>
-      <div class="row" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4px; padding-top: 4px;"><span class="key">portfolio-c</span><span class="action">+ Claude Code</span></div>
-      <div class="row"><span class="key">innit-c</span><span class="action">+ Claude Code</span></div>
-      <div class="row"><span class="key">workdocs-c</span><span class="action">+ Claude Code</span></div>
+      <div class="divider"></div>
+      <div class="subtitle">cd + Claude</div>
+      <div class="row"><span class="key">portfolio-c</span><span class="action">website-portfolio</span></div>
+      <div class="row"><span class="key">innit-c</span><span class="action">Claude-Innit</span></div>
+      <div class="row"><span class="key">workdocs-c</span><span class="action">work_documents</span></div>
     </div>
 
-    <div class="section">
-      <h2>~/_Projects (cd only)</h2>
+    <div class="card purple">
+      <h2>~/_Projects</h2>
       <div class="row"><span class="key">proj</span><span class="action">~/_Projects</span></div>
       <div class="row"><span class="key">bookmcp</span><span class="action">book-mcp-server</span></div>
       <div class="row"><span class="key">ingest</span><span class="action">book-ingestion-python</span></div>
@@ -213,10 +283,8 @@
       <div class="row"><span class="key">wbmcp</span><span class="action">whatbox-portfolio-mcp</span></div>
       <div class="row"><span class="key">wedding</span><span class="action">Wedding-Video</span></div>
       <div class="row"><span class="key">jobhunt</span><span class="action">_Job_Hunt_Docs</span></div>
-    </div>
-
-    <div class="section">
-      <h2>~/_Projects + Claude (-c)</h2>
+      <div class="divider"></div>
+      <div class="subtitle">cd + Claude</div>
       <div class="row"><span class="key">bookmcp-c</span><span class="action">book-mcp-server</span></div>
       <div class="row"><span class="key">ingest-c</span><span class="action">book-ingestion-python</span></div>
       <div class="row"><span class="key">docint-c</span><span class="action">document-intelligence</span></div>
@@ -228,33 +296,39 @@
       <div class="row"><span class="key">wedding-c</span><span class="action">Wedding-Video</span></div>
     </div>
 
-    <div class="section">
+    <div class="card green">
       <h2>Git</h2>
       <div class="row"><span class="key">gs</span><span class="action">git status</span></div>
-      <div class="row"><span class="key">gl</span><span class="action">git log --oneline -10</span></div>
+      <div class="row"><span class="key">gl</span><span class="action">git log -10</span></div>
       <div class="row"><span class="key">gd</span><span class="action">git diff</span></div>
       <div class="row"><span class="key">gco</span><span class="action">git checkout</span></div>
       <div class="row"><span class="key">gb</span><span class="action">git branch</span></div>
       <div class="row"><span class="key">gp</span><span class="action">git push</span></div>
       <div class="row"><span class="key">gc</span><span class="action">git commit</span></div>
+      <div class="divider"></div>
+      <div class="subtitle">Python / Dev</div>
+      <div class="row"><span class="key">serve</span><span class="action">HTTP :8000</span></div>
+      <div class="row"><span class="key">venv</span><span class="action">Create .venv</span></div>
+      <div class="row"><span class="key">activate</span><span class="action">Activate .venv</span></div>
     </div>
 
-    <div class="section">
+    <div class="card amber">
       <h2>Utility</h2>
       <div class="row"><span class="key">ll</span><span class="action">ls -la</span></div>
-      <div class="row"><span class="key">serve</span><span class="action">Python HTTP :8000</span></div>
-      <div class="row"><span class="key">venv</span><span class="action">Create + activate venv</span></div>
-      <div class="row"><span class="key">activate</span><span class="action">Activate .venv</span></div>
-      <div class="row"><span class="key">ports</span><span class="action">Show listening ports</span></div>
-      <div class="row"><span class="key">myip</span><span class="action">Public IP address</span></div>
-      <div class="row"><span class="key">cpwd</span><span class="action">Copy path to clipboard</span></div>
-      <div class="row"><span class="key">reload</span><span class="action">Reload bash_profile</span></div>
+      <div class="row"><span class="key">ports</span><span class="action">Listening ports</span></div>
+      <div class="row"><span class="key">myip</span><span class="action">Public IP</span></div>
+      <div class="row"><span class="key">cpwd</span><span class="action">Copy path</span></div>
+      <div class="row"><span class="key">reload</span><span class="action">Reload shell</span></div>
+      <div class="divider"></div>
+      <div class="subtitle">Navigate</div>
       <div class="row"><span class="key">..</span><span class="action">cd ..</span></div>
       <div class="row"><span class="key">...</span><span class="action">cd ../..</span></div>
       <div class="row"><span class="key">dl</span><span class="action">~/Downloads</span></div>
       <div class="row"><span class="key">desk</span><span class="action">~/Desktop</span></div>
     </div>
+
   </div>
-  <p class="hint">Release Caps Lock + / to close</p>
+</div>
+
 </body>
 </html>
