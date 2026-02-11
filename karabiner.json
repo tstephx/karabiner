@@ -2468,7 +2468,7 @@
                                     "key_code": "slash",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "osascript -e 'tell application \"Finder\" to set {x1, y1, x2, y2} to bounds of window of desktop' -e 'tell application \"Google Chrome\" to set newWindow to make new window' -e 'tell application \"Google Chrome\" to set URL of active tab of newWindow to \"file:///Users/taylorstephens/github/mxstbr/karabiner/cheatsheet.html\"' -e 'tell application \"Google Chrome\" to set bounds of newWindow to {x1, y1, x2, y2}' -e 'tell application \"Google Chrome\" to activate'" }],
+                                "to": [{ "shell_command": "osascript -e 'tell application \"Google Chrome\" to set newWindow to make new window' -e 'tell application \"Google Chrome\" to set URL of active tab of newWindow to \"file:///Users/taylorstephens/github/mxstbr/karabiner/cheatsheet.html\"' -e 'tell application \"Google Chrome\" to activate' -e 'delay 0.1' -e 'tell application \"System Events\" to tell process \"Google Chrome\" to perform action \"AXZoomWindow\" of window 1'" }],
                                 "to_after_key_up": [{ "shell_command": "osascript -e 'tell application \"Google Chrome\" to close (every window whose URL of active tab contains \"cheatsheet.html\")'" }],
                                 "type": "basic"
                             }
@@ -2493,7 +2493,7 @@
                 ]
             },
             "name": "Default",
-            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+            "virtual_hid_keyboard": { "keyboard_type_v2": "iso" }
         }
     ]
 }
