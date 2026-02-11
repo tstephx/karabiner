@@ -2468,7 +2468,7 @@
                                     "key_code": "slash",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -na \"Google Chrome\" --args --new-window --window-size=10000,10000 \"file:///Users/taylorstephens/github/mxstbr/karabiner/cheatsheet.html\"" }],
+                                "to": [{ "shell_command": "osascript -e 'tell application \"Google Chrome\" to set newWindow to make new window' -e 'tell application \"Google Chrome\" to set URL of active tab of newWindow to \"file:///Users/taylorstephens/github/mxstbr/karabiner/cheatsheet.html\"' -e 'tell application \"Google Chrome\" to set bounds of newWindow to {0, 0, 10000, 10000}' -e 'tell application \"Google Chrome\" to activate'" }],
                                 "to_after_key_up": [{ "shell_command": "osascript -e 'tell application \"Google Chrome\" to repeat with w in windows' -e 'if URL of active tab of w contains \"cheatsheet.html\" then close w' -e 'end repeat'" }],
                                 "type": "basic"
                             }
