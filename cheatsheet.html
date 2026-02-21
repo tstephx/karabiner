@@ -96,6 +96,7 @@
       overflow-y: auto;
       min-height: 0;
       flex: 1;
+      container-type: size;
     }
 
     .card::-webkit-scrollbar { width: 0; }
@@ -131,7 +132,7 @@
     /* Card headers */
     .card h2 {
       font-family: 'Orbitron', monospace;
-      font-size: clamp(9px, 0.7vw, 13px);
+      font-size: clamp(9px, 4cqh, 15px);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -158,7 +159,7 @@
 
     .row .action {
       color: #90aa90;
-      font-size: clamp(11px, 0.9vw, 15px);
+      font-size: clamp(11px, 4.5cqh, 16px);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -182,7 +183,7 @@
       border-bottom: 3px solid var(--key-side);
       border-radius: 3px;
       font-family: 'Share Tech Mono', monospace;
-      font-size: clamp(10px, 0.85vw, 14px);
+      font-size: clamp(10px, 4.2cqh, 15px);
       color: #8ab88a;
       white-space: nowrap;
       flex-shrink: 0;
@@ -211,7 +212,7 @@
 
     .subtitle {
       font-family: 'Orbitron', monospace;
-      font-size: clamp(7px, 0.55vw, 10px);
+      font-size: clamp(7px, 3.5cqh, 11px);
       text-transform: uppercase;
       letter-spacing: 1.2px;
       color: var(--muted);
@@ -221,7 +222,7 @@
 
     .badge-c {
       display: inline-block;
-      font-size: clamp(8px, 0.6vw, 11px);
+      font-size: clamp(8px, 3.8cqh, 12px);
       padding: 0 3px;
       background: rgba(199,125,255,0.15);
       color: var(--glow-p);
