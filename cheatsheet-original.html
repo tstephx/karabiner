@@ -3,88 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Cheat Sheet</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg:        #080c08;
-      --surface:   #0b100b;
-      --border:    #1a2e1a;
-      --dim:       #2a3a2a;
-      --glow-g:    #39ff14;
-      --glow-a:    #ffb300;
-      --glow-c:    #00f5ff;
-      --glow-r:    #ff3860;
-      --glow-p:    #c77dff;
-      --glow-b:    #1eb9ff;
-      --text:      #c8e6c8;
-      --muted:     #4a6a4a;
-      --key-bg:    #111a11;
-      --key-top:   #1c2e1c;
-      --key-side:  #0a0f0a;
-      --scanline:  rgba(0,0,0,0.18);
-    }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Share Tech Mono', monospace;
-      background: var(--bg);
-      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: #0e0e10;
+      color: #d4d4d8;
       height: 100vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      padding: 14px 18px;
-      gap: 10px;
+      padding: 20px 24px;
+      gap: 12px;
       -webkit-font-smoothing: antialiased;
-      position: relative;
     }
 
-    /* CRT scanlines overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(
-        to bottom,
-        transparent 0px,
-        transparent 2px,
-        var(--scanline) 2px,
-        var(--scanline) 3px
-      );
-      pointer-events: none;
-      z-index: 100;
-    }
-
-    /* Screen edge vignette */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.7) 100%);
-      pointer-events: none;
-      z-index: 99;
-    }
-
-    /* ── Section label ── */
+    /* ── Section Label ── */
     .label {
-      font-family: 'Orbitron', monospace;
-      font-size: 9px;
-      font-weight: 700;
-      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      color: #52525b;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 0.8px;
       flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    .label::before { content: '▶'; font-size: 7px; color: var(--glow-g); }
-    .label::after  { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-    /* ── Sections ── */
+    /* ── Each section fills its share ── */
     .section {
       display: flex;
       flex-direction: column;
@@ -93,195 +38,117 @@
       flex: 1;
     }
 
+    /* ── Grid fills available space ── */
     .grid {
       display: grid;
-      gap: 8px;
+      gap: 10px;
       flex: 1;
       min-height: 0;
     }
 
-    .grid.top    { grid-template-columns: repeat(7, 1fr); }
+    .grid.top { grid-template-columns: repeat(7, 1fr); }
     .grid.bottom { grid-template-columns: repeat(4, 1fr); }
 
     /* ── Cards ── */
     .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 8px 10px;
+      background: #18181b;
+      border: 1px solid #232326;
+      border-radius: 8px;
+      padding: 10px 14px;
       overflow-y: auto;
       min-height: 0;
-      flex: 1;
     }
 
     .card::-webkit-scrollbar { width: 0; }
 
-    /* Corner brackets — on a non-scrolling wrapper so they stay pinned */
-    .card-wrap {
-      position: relative;
-      min-height: 0;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .card-wrap::before,
-    .card-wrap::after {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .card-wrap::before { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; border-radius: 3px 0 0 0; }
-    .card-wrap::after  { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; border-radius: 0 0 3px 0; }
-
-    .card-wrap.blue::before,   .card-wrap.blue::after   { border-color: var(--glow-b); }
-    .card-wrap.purple::before, .card-wrap.purple::after { border-color: var(--glow-p); }
-    .card-wrap.green::before,  .card-wrap.green::after  { border-color: var(--glow-g); }
-    .card-wrap.amber::before,  .card-wrap.amber::after  { border-color: var(--glow-a); }
-    .card-wrap.rose::before,   .card-wrap.rose::after   { border-color: var(--glow-r); }
-    .card-wrap.cyan::before,   .card-wrap.cyan::after   { border-color: var(--glow-c); }
-    .card-wrap.fkeys::before,  .card-wrap.fkeys::after  { border-color: var(--glow-g); }
-
-    /* Card headers */
     .card h2 {
-      font-family: 'Orbitron', monospace;
-      font-size: 8px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 5px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.6px;
+      margin-bottom: 6px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #232326;
     }
 
-    .card.blue   h2 { color: var(--glow-b);  text-shadow: 0 0 8px var(--glow-b); }
-    .card.purple h2 { color: var(--glow-p);  text-shadow: 0 0 8px var(--glow-p); }
-    .card.green  h2 { color: var(--glow-g);  text-shadow: 0 0 8px var(--glow-g); }
-    .card.amber  h2 { color: var(--glow-a);  text-shadow: 0 0 8px var(--glow-a); }
-    .card.rose   h2 { color: var(--glow-r);  text-shadow: 0 0 8px var(--glow-r); }
-    .card.cyan   h2 { color: var(--glow-c);  text-shadow: 0 0 8px var(--glow-c); }
+    .card.blue h2 { color: #60a5fa; }
+    .card.purple h2 { color: #a78bfa; }
+    .card.green h2 { color: #4ade80; }
+    .card.amber h2 { color: #fbbf24; }
+    .card.rose h2 { color: #fb7185; }
+    .card.cyan h2 { color: #22d3ee; }
 
     /* ── Rows ── */
     .row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 2px 0;
-      gap: 6px;
-      line-height: 1.3;
+      padding: 2.5px 0;
+      gap: 10px;
+      line-height: 1.4;
     }
 
     .row .action {
-      color: #90aa90;
-      font-size: 11px;
+      color: #a1a1aa;
+      font-size: 13px;
       text-align: right;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
-    /* ── Physical Keycap style ── */
+    /* ── Keys ── */
     .key {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 18px;
-      padding: 2px 6px;
-      background: linear-gradient(
-        180deg,
-        var(--key-top) 0%,
-        var(--key-bg) 40%,
-        var(--key-bg) 80%,
-        var(--key-side) 100%
-      );
-      border: 1px solid var(--dim);
-      border-bottom: 3px solid var(--key-side);
-      border-radius: 3px;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: #8ab88a;
+      min-width: 20px;
+      padding: 2px 7px;
+      background: #27272a;
+      border: 1px solid #3f3f46;
+      border-radius: 4px;
+      font-family: "SF Mono", monospace;
+      font-size: 12px;
+      color: #e4e4e7;
       white-space: nowrap;
+      box-shadow: 0 1px 0 #111;
       flex-shrink: 0;
-      box-shadow:
-        0 2px 0 #050805,
-        inset 0 1px 0 rgba(255,255,255,0.04),
-        0 0 4px rgba(57,255,20,0.05);
-
-      text-shadow: 0 0 6px rgba(57,255,20,0.3);
     }
 
-    /* Colored keys per card */
-    .card.blue   .key { color: #90caf9; text-shadow: 0 0 6px rgba(30,185,255,0.4); box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(30,185,255,0.1); }
-    .card.purple .key { color: #c77dff; text-shadow: 0 0 6px rgba(199,125,255,0.4); box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(199,125,255,0.1); }
-    .card.green  .key { color: #39ff14; text-shadow: 0 0 6px rgba(57,255,20,0.5);  box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(57,255,20,0.15); }
-    .card.amber  .key { color: #ffb300; text-shadow: 0 0 6px rgba(255,179,0,0.4);  box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(255,179,0,0.1); }
-    .card.rose   .key { color: #ff3860; text-shadow: 0 0 6px rgba(255,56,96,0.4);  box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(255,56,96,0.1); }
-    .card.cyan   .key { color: #00f5ff; text-shadow: 0 0 6px rgba(0,245,255,0.4);  box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(0,245,255,0.1); }
-
-    /* ── Dividers + Subtitles ── */
+    /* ── Divider + Subtitle ── */
     .divider {
       height: 1px;
-      background: var(--border);
+      background: #232326;
       margin: 3px 0;
     }
 
     .subtitle {
-      font-family: 'Orbitron', monospace;
-      font-size: 7px;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--muted);
-      padding: 3px 0 2px;
-      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #52525b;
+      padding: 4px 0 2px;
+      font-weight: 600;
     }
 
     .badge-c {
       display: inline-block;
-      font-size: 8px;
-      padding: 0 3px;
-      background: rgba(199,125,255,0.15);
-      color: var(--glow-p);
-      border: 1px solid rgba(199,125,255,0.3);
-      border-radius: 2px;
-      margin-left: 3px;
+      font-size: 9px;
+      padding: 1px 4px;
+      background: #3b2d5e;
+      color: #a78bfa;
+      border-radius: 3px;
+      margin-left: 4px;
       font-weight: 600;
       vertical-align: middle;
-      box-shadow: 0 0 4px rgba(199,125,255,0.2);
     }
-
-    /* ── Blinking cursor on label ── */
-    @keyframes blink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 6px;
-      height: 10px;
-      background: var(--glow-g);
-      box-shadow: 0 0 6px var(--glow-g);
-      animation: blink 1.2s step-end infinite;
-      vertical-align: middle;
-      margin-left: 4px;
-    }
-
-    /* F-key card gets special treatment */
-    .card.fkeys::before, .card.fkeys::after { border-color: var(--glow-g); }
-    .card.fkeys h2 { color: var(--glow-g); text-shadow: 0 0 8px var(--glow-g); }
-    .card.fkeys .key { color: #39ff14; text-shadow: 0 0 6px rgba(57,255,20,0.5); border-color: var(--dim); }
   </style>
 </head>
 <body>
 
 <!-- ═══════════════ HYPER KEY ═══════════════ -->
 <div class="section">
-  <div class="label">Hyper Key &mdash; Hold &#8682;<span class="cursor"></span></div>
+  <div class="label">Hyper Key &mdash; Hold &#8682;</div>
   <div class="grid top">
 
-    <div class="card-wrap blue"><div class="card blue">
+    <div class="card blue">
       <h2>O &mdash; Open Apps</h2>
       <div class="row"><span class="key">1</span><span class="action">1Password</span></div>
       <div class="row"><span class="key">g</span><span class="action">Chrome</span></div>
@@ -300,9 +167,8 @@
       <div class="row"><span class="key">w</span><span class="action">WhatsApp</span></div>
       <div class="row"><span class="key">x</span><span class="action">Calibre</span></div>
     </div>
-</div>
 
-    <div class="card-wrap rose"><div class="card rose">
+    <div class="card rose">
       <h2>R &mdash; Raycast</h2>
       <div class="row"><span class="key">h</span><span class="action">Clipboard</span></div>
       <div class="row"><span class="key">e</span><span class="action">Emoji</span></div>
@@ -321,9 +187,8 @@
       <div class="row"><span class="key">p</span><span class="action">Spotify</span></div>
       <div class="row"><span class="key">d</span><span class="action">Do Not Disturb</span></div>
     </div>
-</div>
 
-    <div class="card-wrap purple"><div class="card purple">
+    <div class="card purple">
       <h2>B &mdash; Browse Sites</h2>
       <div class="row"><span class="key">y</span><span class="action">YouTube</span></div>
       <div class="row"><span class="key">r</span><span class="action">Reddit</span></div>
@@ -337,9 +202,8 @@
       <div class="row"><span class="key">w</span><span class="action">Whatbox</span></div>
       <div class="row"><span class="key">t</span><span class="action">Motley Fool</span></div>
     </div>
-</div>
 
-    <div class="card-wrap amber"><div class="card amber">
+    <div class="card amber">
       <h2>W &mdash; Window</h2>
       <div class="row"><span class="key">h</span><span class="action">Left half</span></div>
       <div class="row"><span class="key">l</span><span class="action">Right half</span></div>
@@ -352,9 +216,8 @@
       <div class="row"><span class="key">i</span><span class="action">Next tab</span></div>
       <div class="row"><span class="key">n</span><span class="action">Next window</span></div>
     </div>
-</div>
 
-    <div class="card-wrap green"><div class="card green">
+    <div class="card green">
       <h2>G &mdash; GitHub</h2>
       <div class="row"><span class="key">r</span><span class="action">Search Repos</span></div>
       <div class="row"><span class="key">p</span><span class="action">My PRs</span></div>
@@ -365,10 +228,9 @@
       <div class="row"><span class="key">s</span><span class="action">Starred Repos</span></div>
       <div class="row"><span class="key">l</span><span class="action">Latest Repos</span></div>
     </div>
-</div>
 
-    <div class="card-wrap fkeys"><div class="card fkeys">
-      <h2>F1–F12 &mdash; Finder Tags</h2>
+    <div class="card" style="border-color:#2d3a2d;">
+      <h2 style="color:#4ade80;">F1–F12 &mdash; Finder Tags</h2>
       <div class="subtitle">Status</div>
       <div class="row"><span class="key">F1</span><span class="action">🟢 Active</span></div>
       <div class="row"><span class="key">F2</span><span class="action">🟡 On Hold</span></div>
@@ -388,9 +250,8 @@
       <div class="divider"></div>
       <div class="row"><span class="key">F12</span><span class="action">🧹 Clear All</span></div>
     </div>
-</div>
 
-    <div class="card-wrap cyan"><div class="card cyan">
+    <div class="card cyan">
       <h2>S &mdash; System</h2>
       <div class="row"><span class="key">u</span><span class="action">Volume up</span></div>
       <div class="row"><span class="key">j</span><span class="action">Volume down</span></div>
@@ -401,8 +262,8 @@
       <div class="row"><span class="key">;</span><span class="action">Next track</span></div>
       <div class="divider"></div>
       <div class="subtitle">V &mdash; Vim</div>
-      <div class="row"><span class="key">h j k l</span><span class="action">&larr;&darr;&uarr;&rarr;</span></div>
-      <div class="row"><span class="key">u / i</span><span class="action">Pg dn / up</span></div>
+      <div class="row"><span class="key">h j k l</span><span class="action">&larr; &darr; &uarr; &rarr;</span></div>
+      <div class="row"><span class="key">u / i</span><span class="action">Pg down / up</span></div>
       <div class="divider"></div>
       <div class="subtitle">C &mdash; Music</div>
       <div class="row"><span class="key">p</span><span class="action">Play/pause</span></div>
@@ -411,9 +272,8 @@
       <div class="subtitle">Quick Ref</div>
       <div class="row"><span class="key">Tap &#8682;</span><span class="action">Escape</span></div>
       <div class="row"><span class="key">Hold &#8682;</span><span class="action">Hyper Key</span></div>
-      <div class="row"><span class="key">&#8682; /</span><span class="action">This sheet</span></div>
+      <div class="row"><span class="key">&#8682; /</span><span class="action">This cheatsheet</span></div>
     </div>
-</div>
 
   </div>
 </div>
@@ -423,7 +283,7 @@
   <div class="label">Shell Aliases</div>
   <div class="grid bottom">
 
-    <div class="card-wrap blue"><div class="card blue">
+    <div class="card blue">
       <h2>_Lab</h2>
       <div class="row"><span class="key">lab</span><span class="action">_Lab + Claude</span></div>
       <div class="row"><span class="key">labcd</span><span class="action">cd to _Lab</span></div>
@@ -435,9 +295,8 @@
       <div class="row"><span class="key">innit<span class="badge-c">+c</span></span><span class="action">Claude-Innit</span></div>
       <div class="row"><span class="key">workdocs<span class="badge-c">+c</span></span><span class="action">work_documents</span></div>
     </div>
-</div>
 
-    <div class="card-wrap purple"><div class="card purple">
+    <div class="card purple">
       <h2>~/_Projects</h2>
       <div class="row"><span class="key">proj</span><span class="action">~/_Projects</span></div>
       <div class="row"><span class="key">bookmcp<span class="badge-c">+c</span></span><span class="action">book-mcp-server</span></div>
@@ -452,9 +311,8 @@
       <div class="row"><span class="key">amzn</span><span class="action">Projects-AMZN</span></div>
       <div class="row"><span class="key">jobhunt</span><span class="action">_Job_Hunt_Docs</span></div>
     </div>
-</div>
 
-    <div class="card-wrap green"><div class="card green">
+    <div class="card green">
       <h2>Git</h2>
       <div class="row"><span class="key">gs</span><span class="action">git status</span></div>
       <div class="row"><span class="key">gl</span><span class="action">git log -10</span></div>
@@ -469,9 +327,8 @@
       <div class="row"><span class="key">venv</span><span class="action">Create .venv</span></div>
       <div class="row"><span class="key">activate</span><span class="action">Activate .venv</span></div>
     </div>
-</div>
 
-    <div class="card-wrap amber"><div class="card amber">
+    <div class="card amber">
       <h2>Utility</h2>
       <div class="row"><span class="key">ll</span><span class="action">ls -la</span></div>
       <div class="row"><span class="key">ports</span><span class="action">Listening ports</span></div>
@@ -485,7 +342,6 @@
       <div class="row"><span class="key">dl</span><span class="action">~/Downloads</span></div>
       <div class="row"><span class="key">desk</span><span class="action">~/Desktop</span></div>
     </div>
-</div>
 
   </div>
 </div>
