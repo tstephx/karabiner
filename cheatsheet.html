@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cheat Sheet</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
@@ -22,99 +23,172 @@
       --key-bg:    #111a11;
       --key-top:   #1c2e1c;
       --key-side:  #0a0f0a;
-      --scanline:  rgba(0,0,0,0.18);
+      --nav-h:     48px;
+      --font-base: 0.94rem;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Share Tech Mono', monospace;
       background: var(--bg);
       color: var(--text);
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
       display: flex;
       flex-direction: column;
-      padding: 14px 18px;
-      gap: 10px;
       -webkit-font-smoothing: antialiased;
-      position: relative;
     }
 
-    /* Screen edge vignette */
+    /* ── Sticky nav ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 12, 8, 0.97);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 20px rgba(57,255,20,0.08);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      height: var(--nav-h);
+      padding: 0 20px;
+      gap: 32px;
+    }
+
+    .nav-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--glow-g);
+      text-shadow: 0 0 10px var(--glow-g);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-title .cursor {
+      display: inline-block;
+      width: 7px;
+      height: 12px;
+      background: var(--glow-g);
+      box-shadow: 0 0 6px var(--glow-g);
+      animation: blink 1.2s step-end infinite;
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: 'Orbitron', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      transition: color 0.15s, border-color 0.15s, text-shadow 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--glow-g);
+      border-color: var(--border);
+      text-shadow: 0 0 8px var(--glow-g);
+    }
+
+    .nav-links .sep {
+      width: 1px;
+      height: 16px;
+      background: var(--border);
+    }
+
+    /* ── Screen edge vignette ── */
     body::after {
       content: '';
       position: fixed;
       inset: 0;
-      background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.7) 100%);
+      background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.3) 100%);
       pointer-events: none;
-      z-index: 99;
+      z-index: 50;
+    }
+
+    /* ── Main content ── */
+    .main {
+      padding: 20px 20px 32px;
+      max-width: 1920px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
 
     /* ── Section label ── */
     .label {
       font-family: 'Orbitron', monospace;
-      font-size: clamp(9px, 0.7vw, 13px);
+      font-size: 11px;
       font-weight: 700;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 3px;
-      flex-shrink: 0;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      margin-bottom: 12px;
     }
 
-    .label::before { content: '▶'; font-size: clamp(7px, 0.55vw, 11px); color: var(--glow-g); }
+    .label::before { content: '▶'; font-size: 9px; color: var(--glow-g); }
     .label::after  { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ── Section separator ── */
+    .section + .section {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
 
     /* ── Sections ── */
     .section {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      min-height: 0;
-      flex: 1;
+      scroll-margin-top: calc(var(--nav-h) + 12px);
     }
 
     .grid {
       display: grid;
-      gap: 8px;
-      flex: 1;
-      min-height: 0;
+      gap: 12px;
+      align-items: start;
     }
 
-    .grid.top    { grid-template-columns: repeat(7, 1fr); }
-    .grid.bottom { grid-template-columns: repeat(4, 1fr); }
-
-    /* ── Cards ── */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 8px 10px;
-      overflow-y: auto;
-      min-height: 0;
-      flex: 1;
-      container-type: size;
+    /* Hyper Key: 7 columns on wide, flex down to 2 */
+    .grid.top {
+      grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
     }
 
-    .card::-webkit-scrollbar { width: 0; }
+    /* Shell: 4 columns on wide */
+    .grid.bottom {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
 
-    /* Corner brackets — on a non-scrolling wrapper so they stay pinned */
+    /* ── Card wrapper (corner brackets) ── */
     .card-wrap {
       position: relative;
-      min-height: 0;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
     }
+
     .card-wrap::before,
     .card-wrap::after {
       content: '';
       position: absolute;
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       z-index: 2;
       pointer-events: none;
     }
@@ -129,15 +203,23 @@
     .card-wrap.cyan::before,   .card-wrap.cyan::after   { border-color: var(--glow-c); }
     .card-wrap.fkeys::before,  .card-wrap.fkeys::after  { border-color: var(--glow-g); }
 
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 14px;
+    }
+
     /* Card headers */
     .card h2 {
       font-family: 'Orbitron', monospace;
-      font-size: clamp(9px, 4cqh, 15px);
+      font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      margin-bottom: 5px;
-      padding-bottom: 4px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -147,22 +229,24 @@
     .card.amber  h2 { color: var(--glow-a);  text-shadow: 0 0 8px var(--glow-a); }
     .card.rose   h2 { color: var(--glow-r);  text-shadow: 0 0 8px var(--glow-r); }
     .card.cyan   h2 { color: var(--glow-c);  text-shadow: 0 0 8px var(--glow-c); }
+    .card.fkeys  h2 { color: var(--glow-g);  text-shadow: 0 0 8px var(--glow-g); }
 
     /* ── Rows ── */
     .row {
       display: flex;
       align-items: center;
-      padding: 2px 0;
-      gap: 5px;
-      line-height: 1.3;
+      padding: 3px 0;
+      gap: 7px;
+      line-height: 1.4;
     }
 
     .row .action {
-      color: #90aa90;
-      font-size: clamp(11px, 4.5cqh, 16px);
+      color: #ffffff;
+      font-size: var(--font-base);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      text-shadow: none;
     }
 
     /* ── Physical Keycap style ── */
@@ -170,8 +254,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 18px;
-      padding: 2px 6px;
+      min-width: 22px;
+      padding: 3px 7px;
       background: linear-gradient(
         180deg,
         var(--key-top) 0%,
@@ -183,7 +267,7 @@
       border-bottom: 3px solid var(--key-side);
       border-radius: 3px;
       font-family: 'Share Tech Mono', monospace;
-      font-size: clamp(10px, 4.2cqh, 15px);
+      font-size: var(--font-base);
       color: #8ab88a;
       white-space: nowrap;
       flex-shrink: 0;
@@ -191,77 +275,90 @@
         0 2px 0 #050805,
         inset 0 1px 0 rgba(255,255,255,0.04),
         0 0 4px rgba(57,255,20,0.05);
-
       text-shadow: 0 0 6px rgba(57,255,20,0.3);
     }
 
     /* Colored keys per card */
-    .card.blue   .key { color: #90caf9; text-shadow: 0 0 6px rgba(30,185,255,0.4); box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(30,185,255,0.1); }
-    .card.purple .key { color: #c77dff; text-shadow: 0 0 6px rgba(199,125,255,0.4); box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(199,125,255,0.1); }
-    .card.green  .key { color: #39ff14; text-shadow: 0 0 6px rgba(57,255,20,0.5);  box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(57,255,20,0.15); }
-    .card.amber  .key { color: #ffb300; text-shadow: 0 0 6px rgba(255,179,0,0.4);  box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(255,179,0,0.1); }
-    .card.rose   .key { color: #ff3860; text-shadow: 0 0 6px rgba(255,56,96,0.4);  box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(255,56,96,0.1); }
-    .card.cyan   .key { color: #00f5ff; text-shadow: 0 0 6px rgba(0,245,255,0.4);  box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(0,245,255,0.1); }
+    .card.blue   .key { color: #90caf9; text-shadow: 0 0 6px rgba(30,185,255,0.4);   box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(30,185,255,0.1); }
+    .card.purple .key { color: #c77dff; text-shadow: 0 0 6px rgba(199,125,255,0.4);  box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(199,125,255,0.1); }
+    .card.green  .key { color: #39ff14; text-shadow: 0 0 6px rgba(57,255,20,0.5);    box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(57,255,20,0.15); }
+    .card.amber  .key { color: #ffb300; text-shadow: 0 0 6px rgba(255,179,0,0.4);    box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(255,179,0,0.1); }
+    .card.rose   .key { color: #ff3860; text-shadow: 0 0 6px rgba(255,56,96,0.4);    box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(255,56,96,0.1); }
+    .card.cyan   .key { color: #00f5ff; text-shadow: 0 0 6px rgba(0,245,255,0.4);    box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(0,245,255,0.1); }
+    .card.fkeys  .key { color: #39ff14; text-shadow: 0 0 6px rgba(57,255,20,0.5);    box-shadow: 0 2px 0 #050805, inset 0 1px 0 rgba(255,255,255,0.04), 0 0 4px rgba(57,255,20,0.15); }
 
     /* ── Dividers + Subtitles ── */
     .divider {
       height: 1px;
       background: var(--border);
-      margin: 3px 0;
+      margin: 6px 0;
     }
 
     .subtitle {
       font-family: 'Orbitron', monospace;
-      font-size: clamp(7px, 3.5cqh, 11px);
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.5px;
       color: var(--muted);
-      padding: 3px 0 2px;
+      padding: 4px 0 3px;
       font-weight: 700;
     }
 
     .badge-c {
       display: inline-block;
-      font-size: clamp(8px, 3.8cqh, 12px);
-      padding: 0 3px;
+      font-size: 12px;
+      padding: 0 4px;
       background: rgba(199,125,255,0.15);
       color: var(--glow-p);
       border: 1px solid rgba(199,125,255,0.3);
       border-radius: 2px;
-      margin-left: 3px;
+      margin-left: 2px;
       font-weight: 600;
       vertical-align: middle;
       box-shadow: 0 0 4px rgba(199,125,255,0.2);
     }
 
-    /* ── Blinking cursor on label ── */
     @keyframes blink {
       0%, 49% { opacity: 1; }
       50%, 100% { opacity: 0; }
     }
 
-    .cursor {
-      display: inline-block;
-      width: 6px;
-      height: 10px;
-      background: var(--glow-g);
-      box-shadow: 0 0 6px var(--glow-g);
-      animation: blink 1.2s step-end infinite;
-      vertical-align: middle;
-      margin-left: 4px;
+    /* ── Responsive breakpoints (mobile-first per RWD guide) ── */
+    @media (max-width: 900px) {
+      .grid.top    { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+      .grid.bottom { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
     }
 
-    /* F-key card gets special treatment */
-    .card.fkeys::before, .card.fkeys::after { border-color: var(--glow-g); }
-    .card.fkeys h2 { color: var(--glow-g); text-shadow: 0 0 8px var(--glow-g); }
-    .card.fkeys .key { color: #39ff14; text-shadow: 0 0 6px rgba(57,255,20,0.5); border-color: var(--dim); }
+    @media (max-width: 768px) {
+      .grid.top,
+      .grid.bottom { grid-template-columns: 1fr 1fr; }
+      .nav-title   { display: none; }
+      .main        { padding: 12px 12px 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .grid.top,
+      .grid.bottom { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
+<!-- ══════════════════ STICKY NAV ══════════════════ -->
+<nav class="nav">
+  <div class="nav-title">KBD REF<span class="cursor"></span></div>
+  <div class="nav-links">
+    <a href="#hyper">⌘ Hyper Key</a>
+    <div class="sep"></div>
+    <a href="#shell">$ Shell Aliases</a>
+  </div>
+</nav>
+
+<div class="main">
+
 <!-- ═══════════════ HYPER KEY ═══════════════ -->
-<div class="section">
-  <div class="label">Hyper Key &mdash; Hold &#8682;<span class="cursor"></span></div>
+<div class="section" id="hyper">
+  <div class="label">Hyper Key &mdash; Hold &#8682;</div>
   <div class="grid top">
 
     <div class="card-wrap blue"><div class="card blue">
@@ -282,8 +379,7 @@
       <div class="row"><span class="key">p</span><span class="action">Spotify</span></div>
       <div class="row"><span class="key">w</span><span class="action">WhatsApp</span></div>
       <div class="row"><span class="key">x</span><span class="action">Calibre</span></div>
-    </div>
-</div>
+    </div></div>
 
     <div class="card-wrap rose"><div class="card rose">
       <h2>R &mdash; Raycast</h2>
@@ -303,8 +399,7 @@
       <div class="row"><span class="key">1</span><span class="action">1Password</span></div>
       <div class="row"><span class="key">p</span><span class="action">Spotify</span></div>
       <div class="row"><span class="key">d</span><span class="action">Do Not Disturb</span></div>
-    </div>
-</div>
+    </div></div>
 
     <div class="card-wrap purple"><div class="card purple">
       <h2>B &mdash; Browse Sites</h2>
@@ -319,8 +414,7 @@
       <div class="row"><span class="key">f</span><span class="action">files.archana.cc</span></div>
       <div class="row"><span class="key">w</span><span class="action">Whatbox</span></div>
       <div class="row"><span class="key">t</span><span class="action">Motley Fool</span></div>
-    </div>
-</div>
+    </div></div>
 
     <div class="card-wrap amber"><div class="card amber">
       <h2>W &mdash; Window</h2>
@@ -334,8 +428,7 @@
       <div class="row"><span class="key">u</span><span class="action">Prev tab</span></div>
       <div class="row"><span class="key">i</span><span class="action">Next tab</span></div>
       <div class="row"><span class="key">n</span><span class="action">Next window</span></div>
-    </div>
-</div>
+    </div></div>
 
     <div class="card-wrap green"><div class="card green">
       <h2>G &mdash; GitHub</h2>
@@ -347,8 +440,7 @@
       <div class="row"><span class="key">b</span><span class="action">Create Branch</span></div>
       <div class="row"><span class="key">s</span><span class="action">Starred Repos</span></div>
       <div class="row"><span class="key">l</span><span class="action">Latest Repos</span></div>
-    </div>
-</div>
+    </div></div>
 
     <div class="card-wrap fkeys"><div class="card fkeys">
       <h2>F1–F12 &mdash; Finder Tags</h2>
@@ -370,8 +462,7 @@
       <div class="row"><span class="key">F11</span><span class="action">💰 Finance</span></div>
       <div class="divider"></div>
       <div class="row"><span class="key">F12</span><span class="action">🧹 Clear All</span></div>
-    </div>
-</div>
+    </div></div>
 
     <div class="card-wrap cyan"><div class="card cyan">
       <h2>S &mdash; System</h2>
@@ -395,14 +486,13 @@
       <div class="row"><span class="key">Tap &#8682;</span><span class="action">Escape</span></div>
       <div class="row"><span class="key">Hold &#8682;</span><span class="action">Hyper Key</span></div>
       <div class="row"><span class="key">&#8682; /</span><span class="action">This sheet</span></div>
-    </div>
-</div>
+    </div></div>
 
   </div>
 </div>
 
 <!-- ═══════════════ SHELL ═══════════════ -->
-<div class="section">
+<div class="section" id="shell">
   <div class="label">Shell Aliases</div>
   <div class="grid bottom">
 
@@ -417,8 +507,7 @@
       <div class="row"><span class="key">portfolio<span class="badge-c">+c</span></span><span class="action">website-portfolio</span></div>
       <div class="row"><span class="key">innit<span class="badge-c">+c</span></span><span class="action">Claude-Innit</span></div>
       <div class="row"><span class="key">workdocs<span class="badge-c">+c</span></span><span class="action">work_documents</span></div>
-    </div>
-</div>
+    </div></div>
 
     <div class="card-wrap purple"><div class="card purple">
       <h2>~/_Projects</h2>
@@ -434,8 +523,7 @@
       <div class="row"><span class="key">wedding<span class="badge-c">+c</span></span><span class="action">Wedding-Video</span></div>
       <div class="row"><span class="key">amzn</span><span class="action">Projects-AMZN</span></div>
       <div class="row"><span class="key">jobhunt</span><span class="action">_Job_Hunt_Docs</span></div>
-    </div>
-</div>
+    </div></div>
 
     <div class="card-wrap green"><div class="card green">
       <h2>Git</h2>
@@ -451,8 +539,7 @@
       <div class="row"><span class="key">serve</span><span class="action">HTTP :8000</span></div>
       <div class="row"><span class="key">venv</span><span class="action">Create .venv</span></div>
       <div class="row"><span class="key">activate</span><span class="action">Activate .venv</span></div>
-    </div>
-</div>
+    </div></div>
 
     <div class="card-wrap amber"><div class="card amber">
       <h2>Utility</h2>
@@ -467,11 +554,11 @@
       <div class="row"><span class="key">...</span><span class="action">cd ../..</span></div>
       <div class="row"><span class="key">dl</span><span class="action">~/Downloads</span></div>
       <div class="row"><span class="key">desk</span><span class="action">~/Desktop</span></div>
-    </div>
-</div>
+    </div></div>
 
   </div>
 </div>
 
+</div><!-- /main -->
 </body>
 </html>
