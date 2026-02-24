@@ -107,6 +107,12 @@
       text-shadow: 0 0 8px var(--glow-g);
     }
 
+    .nav-links a:focus-visible {
+      outline: 1px solid var(--glow-g);
+      outline-offset: 2px;
+      color: var(--glow-g);
+    }
+
     .nav-links .sep {
       width: 1px;
       height: 16px;
@@ -241,6 +247,8 @@
     }
 
     .row .action {
+      flex: 1;
+      min-width: 0;
       color: #ffffff;
       font-size: var(--font-base);
       white-space: nowrap;
